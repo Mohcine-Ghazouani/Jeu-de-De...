@@ -16,11 +16,11 @@ export default class Game extends React.Component{
     render(){
         return(
             <React.Fragment>
-                <img src="./images/Dé.PNG" alt=""/>
+                <img src="./images/dice.PNG" alt=""/>
                 <br/>
                 <h1>Jeu de ...</h1>
                 <p>Face : {this.state.face}</p>
-                <img src={"./images/face"+this.state.face+".PNG"} alt=""/>
+                <img src={"./images/dice-"+this.state.face+".PNG"} alt=""/>
                 <p>Nombre d'essai : {this.state.nbEssai}</p>
                 {this.state.face === this.numCache ?
                 <><p>Bravo vous avez trouvez la face cachee .</p><button onClick={()=>this.Initialiser()}>Initialiser</button></>
