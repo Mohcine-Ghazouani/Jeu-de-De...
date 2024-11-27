@@ -25,7 +25,6 @@ export default class Game extends React.Component{
                 {this.state.face === this.numCache ?
                 <><p>Bravo vous avez trouvez la face cachee .</p><button onClick={()=>this.Initialiser()}>Initialiser</button></>
                 :<button onClick={()=>this.jeuer()}>jeuer</button>}
-
             </React.Fragment>
         )
     }
