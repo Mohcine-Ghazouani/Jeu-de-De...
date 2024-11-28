@@ -1,31 +1,32 @@
 import React from "react";
-export default class Game extends React.Component{
-    constructor(props){
-        super(props)
-        this.numCache = Math.floor(Math.random()*6+1)
-        this.state = {face : null , nbEssai :0}
+import { useState } from "react";
+
+
+
+export default function Game() {
+    let numCache = Math.floor(Math.random() * 6 + 1)
+
+    const [state, setState] = useState({face : null , nbEssai :0});
+
+    function jeuer() {
+        let nb_rand = Math.floor(Math.random() * 6 + 1);
+        setState({ face: nb_rand, nbEssai: state.nbEssai + 1 })
     }
-    jeuer(){
-        let nb_rand = Math.floor(Math.random()*6+1);
-        this.setState({face : nb_rand , nbEssai :this.state.nbEssai+1})
+    function Initialiser() {
+        numCache = Math.floor(Math.random() * 6 + 1)
+        setState({ face: null, nbEssai: 0 })
     }
-    Initialiser(){
-        this.numCache = Math.floor(Math.random()*6+1)
-        this.setState({face : null , nbEssai :0})
-    }
-    render(){
-        return(
-            <React.Fragment>
-                <img src="./images/dice.PNG" alt=""/>
-                <br/>
-                <h1>Jeu de ...</h1>
-                <p>Face : {this.state.face}</p>
-                <img src={"./images/dice-"+this.state.face+".PNG"} alt=""/>
-                <p>Nombre d'essai : {this.state.nbEssai}</p>
-                {this.state.face === this.numCache ?
-                <><p>Bravo vous avez trouvez la face cachee .</p><button onClick={()=>this.Initialiser()}>Initialiser</button></>
-                :<button onClick={()=>this.jeuer()}>jeuer</button>}
-            </React.Fragment>
-        )
-    }
+    return (
+        <React.Fragment>
+            <img src="./images/dice.PNG" alt="img" />
+            <br />
+            <h1>Jeu de ...</h1>
+            <p>Face : {state.face}</p>
+            <img src={"./images/dice-" + state.face + ".PNG"} alt="img" />
+            <p>Nombre d'essai : {state.nbEssai}</p>
+            {state.face === numCache ?
+                <><p>Bravo vous avez trouvez la face cachee .</p><button onClick={() => Initialiser()}>Initialiser</button></>
+                : <button onClick={() => jeuer()}>jeuer</button>}
+        </React.Fragment>
+    )
 }
